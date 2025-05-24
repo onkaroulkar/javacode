@@ -36,9 +36,11 @@ which was previously not possible.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 1. Default Methods in Java
 A default method is a method in an interface that has a body (implementation). It is declared using the default keyword.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Why Are Default Methods Useful?
 - Allows adding new methods to interfaces without breaking existing implementations.
 - Helps in evolving APIs gracefully.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 interface Vehicle {
     void speedUp(); // Abstract method (must be implemented in subclass)
 
@@ -69,9 +71,11 @@ Key Points
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 2. Static Methods in Java
 A static method in an interface is like a utility method that belongs to the interface itself, not to any instance.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Why Use Static Methods in Interfaces?
 - Allows utility methods related to the interface.
 - Prevents polluting helper methods inside implementing classes.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 interface MathUtils {
     static int add(int a, int b) {
@@ -85,9 +89,82 @@ public class StaticMethodExample {
         System.out.println("Sum: " + sum);
     }
 }
-
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Key Points
 ✔ Static methods belong to the interface itself, not to objects
 ✔ They are called directly using InterfaceName.methodName()
 ✔ They cannot be overridden by implementing classes
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Multiple Inheritance with Default Methods
+Scenario: Two interfaces (A and B) have the same default method show(), and a class implements both.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+interface A {
+    default void show() {
+        System.out.println("Default method from Interface A");
+    }
+}
 
+interface B {
+    default void show() {
+        System.out.println("Default method from Interface B");
+    }
+}
+
+class C implements A, B {
+    @Override
+    public void show() {
+        System.out.println("Overridden show() method in Class C");
+    }
+}
+
+public class MultipleInheritanceExample {
+    public static void main(String[] args) {
+        C obj = new C();
+        obj.show(); // Calls overridden method
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Key Points
+✔ If two interfaces have the same default method, the implementing class must override it
+✔ This prevents ambiguity in method resolution
+✔ Java forces the subclass to explicitly define its behavior
+
+Handling Ambiguity with super
+If you want to call a specific interface's method, use InterfaceName.super.methodName().
+Example: Resolving Method Conflict
+class C implements A, B {
+    @Override
+    public void show() {
+        A.super.show(); // Explicitly calling Interface A’s method
+        B.super.show(); // Explicitly calling Interface B’s method
+    }
+}
+
+
+Output
+Default method from Interface A
+Default method from Interface B
+
+
+
+Comparison: Multiple Inheritance in Java vs. Other Languages
+| Feature | Java Interfaces | C++ Multiple Inheritance | 
+| Method Conflict | Requires super.methodName() | Can use virtual functions | 
+| Supports Multiple Parent Classes? | Yes (Interfaces Only) | Yes (Classes) | 
+| Diamond Problem? | Avoids using interfaces | Uses virtual inheritance | 
+
+
+Java’s approach ensures clarity and avoids unintended behavior.
+Would you like to see how static methods interact with inheritance scenarios too? 🚀
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Handling Ambiguity with super
+If you want to call a specific interface's method, use InterfaceName.super.methodName().
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+class C implements A, B {
+    @Override
+    public void show() {
+        A.super.show(); // Explicitly calling Interface A’s method
+        B.super.show(); // Explicitly calling Interface B’s method
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
