@@ -37,3 +37,43 @@ public class Demo {
 	
 	}
 }
+
+
+=================================================================================================================================================================
+
+🔹 What is a Static Variable in Java?
+A static variable in Java is a class-level variable that is shared among all instances of the class. It is declared using the static keyword.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Key Characteristics
+Feature	Description
+Memory	        Stored in the Method Area (not in heap like instance variables).
+Lifetime	Exists for the entire duration of the program.
+Access	        Can be accessed using the class name or an object.
+Shared	        Common to all instances of the class.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Static Variables in Inheritance
+Static variables are inherited, but they are not overridden.
+
+class Parent {
+    static int value = 10;
+}
+
+class Child extends Parent {
+    static int value = 20;  // Hides Parent's value, doesn't override
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Static Blocks and Initialization
+You can initialize static variables using a static block, which runs once when the class is loaded.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Use Cases of Static Variables
+Counters (e.g., number of objects created)
+Constants (e.g., static final double PI = 3.14;)
+Shared Configuration (e.g., database settings)
+Utility Classes (e.g., Math.PI)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Best Practices
+✅ Use static variables for:
+
+Constants (static final)
+Shared data across instances
+===================================================================================================================================================================
