@@ -64,7 +64,12 @@ public class Student {
     public Student(String name) {
         this.name = name; // 'this.name' refers to the instance variable
     }
-}public class Student {
+}
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Calling Another Constructor in the Same Class
+You can use this() to call another constructor from within a constructor. This is known as constructor chaining.
+
+public class Student {
     private String name;
     private int age;
 
