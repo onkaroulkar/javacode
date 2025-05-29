@@ -45,3 +45,7 @@ public class  Demo{
     }
 }
 
+=============================================================================================================================================
+
+In Java, the abstract keyword is a modifier used for classes and methods. It plays a crucial role in object-oriented programming by supporting
+abstraction, one of the four fundamental OOP principles (along with encapsulation, inheritance, and polymorphism).
