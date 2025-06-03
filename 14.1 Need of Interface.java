@@ -94,3 +94,29 @@ public class Demo {
         
     }
 }
+===========================================================================================================================================================================================================
+🧩 What is an Interface in Java?
+An interface in Java is a reference type, similar to a class, that can contain:
+
+Abstract methods (method signatures without bodies)
+Default methods (with a body)
+Static methods
+Constants (public static final variables)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+An interface defines a contract that classes can implement. It tells what a class must do, but not how to do it.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+🧱 Syntax of an Interface
+interface Animal {
+    void eat(); // abstract method
+}
+
+A class implements an interface using the implements keyword:
+class Dog implements Animal {
+    public void eat() {
+        System.out.println("Dog eats meat");
+    }
+}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+	
