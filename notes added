@@ -150,6 +150,20 @@ class Shared {
     }
 }
 -------------------------------------------------------------------------------------------
+🧰 8. Thread Pools (ExecutorService)
+Instead of creating a new thread every time, use a Thread Pool for better performance.
+
+ExecutorService executor = Executors.newFixedThreadPool(3);
+executor.submit(() -> System.out.println("Task executed"));
+executor.shutdown();
 
 
+Advantages:
+
+Reuses threads.
+
+Improves performance.
+
+Manages thread lifecycle.
+--------------------------------------------- CPU.
 
