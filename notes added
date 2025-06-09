@@ -2,7 +2,15 @@
 A thread is essentially a lightweight unit of execution within a process. Java supports multithreading through the java.lang.Thread class and the java.lang.Runnable 
   interface. Having multiple threads means that your application can perform several operations concurrently, making it possible to improve performance on multi-core
   CPUs or maintain a responsive user interface while doing long-running tasks.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------
+⚙️ 2. Process vs Thread
+Concept	             Process	                                            Thread
+Definition	         A running instance of a program               	A lightweight sub-process
+Memory               Has its own memory space	                      Shares memory with other threads
+Communication	       Inter-process communication is complex 	      Inter-thread communication is easy
+Overhead	           High	                                          Low
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
 2. Creating Threads
 There are two primary ways to create a thread in Java:
 2.1 Extending the Thread Class
@@ -121,7 +129,27 @@ Key Points:
 - It does not guarantee atomicity for compound actions (e.g., incrementing a variable).
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+7. Thread Communication (wait/notify)
+Java allows threads to communicate via:
 
+wait(): Makes thread wait.
+
+notify(): Wakes up one waiting thread.
+
+notifyAll(): Wakes up all waiting threads.
+------------------------------------------------------------------------------------------------------
+class Shared {
+    synchronized void produce() throws InterruptedException {
+        wait(); // waits for notify
+        System.out.println("Produced");
+    }
+
+    synchronized void consume() {
+        System.out.println("Consumed");
+        notify(); // notifies waiting thread
+    }
+}
+-------------------------------------------------------------------------------------------
 
 
 
